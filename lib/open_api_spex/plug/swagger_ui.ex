@@ -109,7 +109,18 @@ defmodule OpenApiSpex.Plug.SwaggerUI do
         )
       <% end %>
       window.ui = ui
-    }
+
+      const swaggerPage = document.querySelector('.swagger-ui');
+
+      if (swaggerPage) {
+          const matchesBlock = swaggerPage.querySelector('#operations-matches-FraytElixirWeb\.API\.V2_2\.MatchController\.update')
+          matchesBlock.querySelectorAll('opblock-summary-method').forEach((el) => {
+              if (el.innerHTML == "PUT") {
+                  el.innerHTML = "PATCH";
+              }
+          })
+        }
+      }
     </script>
     </body>
     </html>
